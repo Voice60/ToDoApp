@@ -1,0 +1,36 @@
+%blbd {
+  border: 1px solid #000;
+}
+
+.heroWrap {
+  width: 100%;
+  max-width: 1170px;
+  margin: 0 auto;
+}
+
+.mainWrap {
+  margin: 0 10px;
+
+  .mainTitle {
+    margin-bottom: 50px;
+    font-size: 3.5rem;
+  }
+
+  font-size: 1.5rem;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    @extend %blbd;
+
+    th,
+    tr,
+    td {
+      @extend %blbd;
+
+      text-align: center;
+    }
+
+    thead {}
+  }
+}
