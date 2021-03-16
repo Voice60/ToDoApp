@@ -1,17 +1,20 @@
 import { connect, Provider } from 'react-redux';
 import './App.scss';
-import { addListItem, removeListItem } from './redux/listReducer';
+import TasksContainer from './components/tasksContainer';
+import { addTask, removeTask } from './redux/listReducer';
 import store from './redux/store';
 
-function App({ list, addListItem, removeListItem }) {
+function App({ list, addTask, removeTask }) {
   let tableElements = list.map((el) => {
 
     return (
       <tr>
         <td>{el.id}</td>
         <td>{el.name}</td>
-        <td>
-          <button onClick={() => removeListItem(el.id)}></button>
+        <td onClick={() => removeTask(el.id)}>
+          <p></p>
+            {/* <button ></button> */}
+
         </td>
       </tr>
     )
@@ -20,23 +23,12 @@ function App({ list, addListItem, removeListItem }) {
   return (
       <div className='heroWrap'>
         <header>
-          <h1 align='center' className='mainTitle'>My first try to do something</h1>
+          <h1 align='center' className='mainTitle'>All Tasks</h1>
         </header>
         <div className="mainWrap">
-          <table>
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Product name</th>
-                <th>Remove</th>
-              </tr>
-            </thead>
-            {tableElements}
-            <tbody>
-            </tbody>
-          </table>
+          <TasksContainer />
         </div>
-        <button onClick={addListItem}></button>
+        <button className='addNewTask' onClick={addTask}>+</button>
       </div>
   );
 }
@@ -49,11 +41,11 @@ let mstp = (state) => {
 }
 let mdtp = (dispatch) => {
   return {
-    addListItem: () => {
-      dispatch(addListItem())
+    addTask: () => {
+      dispatch(addTask())
     },
-    removeListItem: (id) => {
-      dispatch(removeListItem(id))
+    removeTask: (id) => {
+      dispatch(removeTask(id))
     }
   }
 }
