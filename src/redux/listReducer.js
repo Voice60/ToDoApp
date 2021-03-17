@@ -15,9 +15,10 @@ let InitialState = {
 const listReducer = (state = InitialState, action) => {
   switch (action.type) {
     case ADD_TASK: {
+      state.currentId++
       return {
         ...state,
-        items: [...state.items, { task: '', status: false, id: state.currentId }]
+        items: [...state.items, { task: '', status: true, id: state.currentId }]
       }}
     case EDIT_TASK: {
       let newList = [...state.items]

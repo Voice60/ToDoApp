@@ -5,25 +5,11 @@ import { addTask, removeTask } from './redux/listReducer';
 import store from './redux/store';
 
 function App({ list, addTask, removeTask }) {
-  let tableElements = list.map((el) => {
-
-    return (
-      <tr>
-        <td>{el.id}</td>
-        <td>{el.name}</td>
-        <td onClick={() => removeTask(el.id)}>
-          <p></p>
-            {/* <button ></button> */}
-
-        </td>
-      </tr>
-    )
-  })
-
+  
   return (
       <div className='heroWrap'>
         <header>
-          <h1 align='center' className='mainTitle'>All Tasks</h1>
+          <h1 className='mainTitle'>All Tasks</h1>
         </header>
         <div className="mainWrap">
           <TasksContainer />

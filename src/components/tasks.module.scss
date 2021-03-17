@@ -1,19 +1,147 @@
-.customСheckbox {
-  position: absolute;
-  z-index: -1;
-  opacity: 0;
-}
-.customCheckbox:before {
-  content: '';
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  flex-shrink: 0;
-  flex-grow: 0;
-  border: 1px solid #adb5bd;
-  border-radius: 0.25em;
-  margin-right: 0.5em;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: 50% 50%;
+@import '../assets.scss';
+
+.item {
+  display: flex;
+  vertical-align: middle;
+  align-items: center;
+  background-color: $darkGray;
+  border-radius: 40px;
+  box-shadow: $shadow;
+  min-height: 60px;
+  padding: 0;
+  margin-bottom: 1.5rem;
+  animation-name: emergenceItem;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+
+  @keyframes emergenceItem {
+    0% {
+      margin-right: 100vw;
+      opacity: 0;
+    }
+
+    20% {
+      opacity: 0;
+    }
+
+    60% {
+      opacity: 1;
+    }
+
+    100% {
+      margin-right: 0;
+    }
+  }
+
+  .task {
+    position: relative;
+    height: 16px;
+    line-height: 100%;
+    font-size: 1rem;
+    padding: 30px 70px 30px 20px;
+    margin: 0;
+    flex-grow: 1;
+    transition-duration: 0.3s;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    animation-name: emergenceTask;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    border-radius: 40px;
+    white-space: nowrap;
+
+    @keyframes emergenceTask {
+      0% {
+        white-space: nowrap;
+      }
+      99% {
+        white-space: nowrap;
+      }
+
+      100% {
+        white-space: initial;
+      }
+    }
+  }
+
+  .statusTrue {
+    color: darken($darkGray, 20%);
+    text-decoration: line-through;
+  }
+
+  .inputTask {
+    background-color: transparent;
+    position: relative;
+    height: 16px;
+    line-height: 100%;
+    font-size: 1rem;
+    padding: 30px 70px 30px 20px;
+    margin: 0;
+    flex-grow: 1;
+    transition-duration: 0.3s;
+    overflow: hidden;
+    border-radius: 40px;
+    border: none;
+    font-family: $font;
+  }
+
+  .label {
+    width: 40px;
+    height: 40px;
+    margin-right: 7px;
+    position: absolute;
+    right: 20px;
+    animation-name: emergenceLabel;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+
+    @keyframes emergenceLabel {
+      0% {
+        right: 100vw;
+      }
+      100% {
+        right: 20px;
+      }
+    }
+
+    .checkbox {
+      font-size: 0px;
+      display: none;
+    }
+
+    .customСheckbox {
+      display: inline-block;
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      box-shadow: $shadow;
+      background-color: $darkGray;
+      cursor: pointer;
+      position: relative;
+
+      &::before {
+        content: '✔';
+        position: absolute;
+        color: #ffffff;
+        background-color: #37D7B2;
+        font-size: 1.5rem;
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: .3s;
+      }
+    }
+
+    .checkbox:checked+.customСheckbox:before {
+      opacity: 1;
+    }
+  }
+
 }
