@@ -1,17 +1,15 @@
-//Consts
-
+//consts
 const ADD_TASK = 'ADD_TASK'
-const REMOVE_TASK = 'REMOVE_TASK'
 const TOGGLE_STATUS = 'TOGGLE_STATUS'
 const EDIT_TASK = 'EDIT_TASK'
 
-
+// status true means that task not done
 let InitialState = {
-  items: [{ task: 'Create Web Application', status: true, id: 0 }],
+  items: [{ task: 'Create Web Application', status: true, id: 1 }],
   currentId: 1
 }
 
-//Reducer
+//reducer
 const listReducer = (state = InitialState, action) => {
   switch (action.type) {
     case ADD_TASK: {
@@ -19,7 +17,8 @@ const listReducer = (state = InitialState, action) => {
       return {
         ...state,
         items: [...state.items, { task: '', status: true, id: state.currentId }]
-      }}
+      }
+    }
     case EDIT_TASK: {
       let newList = [...state.items]
       for (let i = 0; newList.length > i; i++) {
@@ -30,7 +29,8 @@ const listReducer = (state = InitialState, action) => {
       return {
         ...state,
         items: newList
-      }}
+      }
+    }
     case TOGGLE_STATUS: {
       let newList = [...state.items]
       for (let i = 0; newList.length > i; i++) {
@@ -41,27 +41,16 @@ const listReducer = (state = InitialState, action) => {
       return {
         ...state,
         items: newList
-      }}
-    case REMOVE_TASK: {
-      let newList = [...state.items]
-      for (let i = 0; newList.length > i; i++) {
-        if (newList[i].id === action.id) {
-          newList.splice(i, 1)
-        }
-        return {
-          ...state,
-          items: [...newList]
-        }
-      }}
+      }
+    }
     default: return state
   }
 }
 
-//Actions
+//actions
 export const addTask = () => ({ type: ADD_TASK })
-export const removeTask = (id) => ({ type: REMOVE_TASK, id })
 export const toggleStatus = (id) => ({ type: TOGGLE_STATUS, id })
-export const editTask = (id, task) => ({ type: EDIT_TASK, id, task})
+export const editTask = (id, task) => ({ type: EDIT_TASK, id, task })
 
 
 export default listReducer

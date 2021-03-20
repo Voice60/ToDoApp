@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addTask, toggleStatus, editTask } from '../redux/listReducer'
+import { toggleStatus, editTask } from '../redux/listReducer'
 import Tasks from './tasks'
 
 let TasksContainer = ({ tasks, toggleStatus, editTask }) => {

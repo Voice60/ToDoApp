@@ -1,13 +1,14 @@
 @import '../assets.scss';
 
 .item {
+  position: relative;
   display: flex;
-  vertical-align: middle;
   align-items: center;
   background-color: $darkGray;
-  border-radius: 40px;
+  border-radius: 38px;
   box-shadow: $shadow;
   min-height: 60px;
+  width: 100%;
   padding: 0;
   margin-bottom: 1.5rem;
   animation-name: emergenceItem;
@@ -16,8 +17,7 @@
 
   @keyframes emergenceItem {
     0% {
-      margin-right: 100vw;
-      opacity: 0;
+      margin-left: -100vw;
     }
 
     20% {
@@ -29,39 +29,16 @@
     }
 
     100% {
-      margin-right: 0;
+      margin-left: 0;
     }
   }
 
   .task {
-    position: relative;
-    height: 16px;
-    line-height: 100%;
-    font-size: 1rem;
-    padding: 30px 70px 30px 20px;
+    min-height: 16px;
+    padding: 30px 80px 30px 20px;
     margin: 0;
     flex-grow: 1;
-    transition-duration: 0.3s;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    animation-name: emergenceTask;
-    animation-duration: 1s;
-    animation-timing-function: ease-out;
-    border-radius: 40px;
-    white-space: nowrap;
-
-    @keyframes emergenceTask {
-      0% {
-        white-space: nowrap;
-      }
-      99% {
-        white-space: nowrap;
-      }
-
-      100% {
-        white-space: initial;
-      }
-    }
+    word-break: break-word;
   }
 
   .statusTrue {
@@ -69,20 +46,17 @@
     text-decoration: line-through;
   }
 
-  .inputTask {
+  .textareaTask {
     background-color: transparent;
-    position: relative;
-    height: 16px;
-    line-height: 100%;
-    font-size: 1rem;
-    padding: 30px 70px 30px 20px;
-    margin: 0;
+    font-size: inherit;
+    min-height: 100px;
+    padding: 15px 0 15px 0px;
+    margin: 15px 75px 15px 20px;
     flex-grow: 1;
     transition-duration: 0.3s;
-    overflow: hidden;
-    border-radius: 40px;
     border: none;
     font-family: $font;
+    resize: none;
   }
 
   .label {
@@ -91,22 +65,14 @@
     margin-right: 7px;
     position: absolute;
     right: 20px;
-    animation-name: emergenceLabel;
-    animation-duration: 1s;
-    animation-timing-function: ease-out;
-
-    @keyframes emergenceLabel {
-      0% {
-        right: 100vw;
-      }
-      100% {
-        right: 20px;
-      }
-    }
 
     .checkbox {
       font-size: 0px;
       display: none;
+
+      &:checked+.customСheckbox:before {
+        opacity: 1;
+      }
     }
 
     .customСheckbox {
@@ -138,10 +104,5 @@
         transition: .3s;
       }
     }
-
-    .checkbox:checked+.customСheckbox:before {
-      opacity: 1;
-    }
   }
-
 }

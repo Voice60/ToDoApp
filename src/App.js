@@ -1,21 +1,21 @@
 import { connect, Provider } from 'react-redux';
 import './App.scss';
 import TasksContainer from './components/tasksContainer';
-import { addTask, removeTask } from './redux/listReducer';
+import { addTask } from './redux/listReducer';
 import store from './redux/store';
 
-function App({ list, addTask, removeTask }) {
-  
+function App({ addTask }) {
+
   return (
-      <div className='heroWrap'>
-        <header>
-          <h1 className='mainTitle'>All Tasks</h1>
-        </header>
-        <div className="mainWrap">
-          <TasksContainer />
-        </div>
-        <button className='addNewTask' onClick={addTask}>+</button>
+    <div className='heroWrap'>
+      <header>
+        <h1 className='mainTitle'>All Tasks</h1>
+      </header>
+      <div className="mainWrap">
+        <TasksContainer />
       </div>
+      <button className='addNewTask' onClick={addTask}>+</button>
+    </div>
   );
 }
 
@@ -29,9 +29,6 @@ let mdtp = (dispatch) => {
   return {
     addTask: () => {
       dispatch(addTask())
-    },
-    removeTask: (id) => {
-      dispatch(removeTask(id))
     }
   }
 }

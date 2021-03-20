@@ -1,8 +1,10 @@
 @import './assets.scss';
 
-:active, :hover, :focus {
-    outline: 0;
-    outline-offset: 0;
+:active,
+:hover,
+:focus {
+  outline: 0;
+  outline-offset: 0;
 }
 
 body {
@@ -12,6 +14,7 @@ body {
   font-family: $font;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 code {
