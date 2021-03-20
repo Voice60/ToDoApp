@@ -29,7 +29,7 @@
   width: 48px;
   height: 48px;
   background-color: #5CA8E0;
-  background: linear-gradient(45deg, #7F7FD5, #86A8E7, #2C5364);
+  background: linear-gradient(0, #7F7FD5, #86A8E7, #2C5364);
   background-size: 300% 300%;
   animation: buttonGradient 4s ease-in infinite;
   padding: 10px;
@@ -45,18 +45,18 @@
 
 @keyframes buttonGradient {
   0% {
-    background-position: 0% 50%;
+    background-position: 0% 0%;
   }
-  25% {
-    background-position: 50% 100%;
-  }
+  // 25% {
+  //   background-position: 50% 100%;
+  // }
   50% {
-    background-position: 100% 50%;
+    background-position: 100% 100%;
   }
-  75% {
-    background-position: 50% 0%;
-  }
+  // 75% {
+  //   background-position: 50% 0%;
+  // }
   100% {
-    background-position: 0% 50%;
+    background-position: 0% 0%;
   }
 }

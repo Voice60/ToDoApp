@@ -40,11 +40,16 @@
     margin: 0;
     flex-grow: 1;
     word-break: break-word;
+    cursor: text;
   }
 
   .statusTrue {
     color: darken($darkGray, 20%);
     text-decoration: line-through;
+  }
+
+  .emptyTask {
+    color: darken($darkGray, 55%);
   }
 
   .textareaTask {

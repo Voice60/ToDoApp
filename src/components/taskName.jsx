@@ -12,15 +12,17 @@ let TaskName = ({ editTask, el, click }) => {
 
   let deactivateEditMode = () => {
     setEditMode(false)
-    editTask(el.id, taskNameValue)
+    editTask(el.id, taskNameValue.trim())
+    setTaskNameValue(el.task)
   }
 
   let onTaskChange = (e) => {
     setTaskNameValue(e.currentTarget.value)
   }
 
-  let classNameP = cn(styles.task, {
-    [styles.statusTrue]: !el.status
+  let className = cn(styles.task, {
+    [styles.statusTrue]: !el.status,
+    [styles.emptyTask]: !el.task
   })
   return (
     <>
@@ -33,7 +35,9 @@ let TaskName = ({ editTask, el, click }) => {
           value={taskNameValue}
           className={styles.textareaTask}></textarea>
         : <p onClick={activateEditMode}
-          className={classNameP}>{el.task}</p>}
+          className={className}>{el.task
+            ? el.task
+            : "your task"}</p>}
     </>
   )
 }
