@@ -1,10 +1,17 @@
 import { connect, Provider } from 'react-redux';
 import './App.scss';
-import TasksContainer from './components/tasksContainer';
-import { addTask } from './redux/listReducer';
+import Tasks from './components/tasks';
+import { addTask, editTask, toggleStatus } from './redux/listReducer';
 import store from './redux/store';
 
-function App({ addTask }) {
+function App({ addTask, tasks, toggleStatus, editTask }) {
+
+  let tasksElements = tasks.map(
+    (el) => (
+      <Tasks key={el.id}
+        el={el}
+        toggleStatus={toggleStatus}
+        editTask={editTask} />))
 
   return (
     <div className='heroWrap'>
@@ -12,7 +19,7 @@ function App({ addTask }) {
         <h1 className='mainTitle'>All Tasks</h1>
       </header>
       <div className="mainWrap">
-        <TasksContainer />
+        {tasksElements}
       </div>
       <button className='addNewTask' onClick={addTask}>+</button>
     </div>
@@ -22,14 +29,21 @@ function App({ addTask }) {
 // desirable use selectors
 let mstp = (state) => {
   return {
-    list: state.list.items
+    tasks: state.list.items
   }
 }
+
 let mdtp = (dispatch) => {
   return {
     addTask: () => {
       dispatch(addTask())
-    }
+    },
+    toggleStatus: (id) => {
+      dispatch(toggleStatus(id))
+    },
+    editTask: (id, task) => {
+      dispatch(editTask(id, task))
+    },
   }
 }
 
@@ -42,6 +56,7 @@ const MainApp = () => {
     </Provider>
   )
 }
+
 export default MainApp;
 
 
